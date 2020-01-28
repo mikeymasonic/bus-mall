@@ -10,21 +10,60 @@
 </head>
 
 <body>
-
-    <h1>BusMall</h1>
+    <header>
+        <h1>BusMall</h1>
+    </header>
+<main>
     <h3>Help us making some marketing choices!</h3>
-    <h4>Make a selection of a product that you like out of the three listed, once you make a selection, click "Submit Choice" to continue</h4>
-    <div id="option1"></div>
-    <div id="option2"></div>
-    <div id="option3"></div>
+    <h4>Make a selection of a product that you would likely purchase out of the three listed, once you make a selection, click "Submit Choice" to continue</h4>
+<!-- 
+    <div id="picture1" class="pictures"></div>
+    <div id="picture2" class="pictures"></div>
+    <div id="picture3" class="pictures"></div> -->
 
-    <p>
-    <div id="status-count"></div> / 25
-    </p>
+    <div id="choice-container">
 
-    <button id="submit-button">Submit Choice</button>
+        <label class="picture1">
+            <input type="radio" name="" value="">
+            <img id="img1" src="">
+            <p class="description"></p>
+        </label>
+
+        <label class="picture2">
+            <input type="radio" name="" value="">
+            <img id="img2" src="">
+            <p class="description"></p>
+        </label>
+
+        <label class="picture3">
+            <input type="radio" name="" value="">
+            <img id="img3" src="">
+            <p class="description"></p>
+        </label>
+        <section id="buttonLinks"></section>
+    </div>
+</section>
+
     
 
+    <p>
+    <div id="status-count"></div> out of 25
+    </p>
+
+    
+
+    <button id="button">Submit Choice</button>
+
+    <p id="next-container" class="hidden">
+        <button id="next-button">Next</button>
+    </p>
+    
+    <p>
+        <a href="./">Play Again</a>
+    </p>
+
+    <div id="all-time-views-clicks"></div>
+</main>
     <script type="module" src="app.js"></script>
 </body>
 
