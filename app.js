@@ -231,7 +231,7 @@ form.addEventListener('submit', (e) => {
 		// if theres coffee in the votes array, increment the votes for coffee
         // if theres no coffee, push some coffee into the array
         
-    if (totalVotes >= 10) {
+    if (totalVotes >= 25) {
         // document.querySelector('button').disabled = true;
         // alert('Thanks for your participation!');
         window.location = 'results.html';
