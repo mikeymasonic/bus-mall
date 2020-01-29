@@ -18,10 +18,12 @@ function findById(items, id) {
 
 let totalVotes;
 let productVoteDetails;
+let productDisplayDetails;
 
 const initializeState = () => {
     totalVotes = 0;
     productVoteDetails = [];
+    productDisplayDetails = [];
 };
 
 initializeState();
@@ -34,17 +36,17 @@ const displayThreeProducts = (previousProduct1, previousProduct2, previousProduc
     let product2 = getRandomProduct(productsData);
     let product3 = getRandomProduct(productsData);
 
-    while (previousProduct1 === product1.id || previousProduct1 === product2.id || previousProduct1 === product3.id || previousProduct2 === product1.id || previousProduct2 === product2.id || previousProduct2 === product3.id || previousProduct3 === product1.id || previousProduct3 === product2.id || previousProduct3 === product3.id) {
-        product1 = getRandomProduct(productsData);
-        product2 = getRandomProduct(productsData);
-        product3 = getRandomProduct(productsData);
-    }
-
 	// make sure the products are unique/not the same
     while (product1.id === product2.id
 			|| product2.id === product3.id
             || product1.id === product3.id
     ) {
+        product2 = getRandomProduct(productsData);
+        product3 = getRandomProduct(productsData);
+    }
+
+    while (previousProduct1 === product1.id || previousProduct1 === product2.id || previousProduct1 === product3.id || previousProduct2 === product1.id || previousProduct2 === product2.id || previousProduct2 === product3.id || previousProduct3 === product1.id || previousProduct3 === product2.id || previousProduct3 === product3.id) {
+        product1 = getRandomProduct(productsData);
         product2 = getRandomProduct(productsData);
         product3 = getRandomProduct(productsData);
     }
@@ -70,13 +72,27 @@ const displayThreeProducts = (previousProduct1, previousProduct2, previousProduc
     radio2.value = product2.name;
     radio3.value = product3.name;
     radio1Span.textContent = product1.name;
-    radio2Span.textContent = product2.name;radio3Span.textContent = product3.name;
+    radio2Span.textContent = product2.name;
+    radio3Span.textContent = product3.name;
     image1.src = product1.image;
     image2.src = product2.image;
     image3.src = product3.image;
     let previousProductArray = [previousProduct1, previousProduct2, previousProduct3];
     // return previousProduct1, previousProduct2, previousProduct3;
     previousProductArray;
+
+
+    const productDisplayArray = findById(productDisplayDetails);
+    if (productDisplayArray) {
+        productDisplayArray.timesDisplayed++;
+        
+    } else {
+
+        productDisplayDetails.push({
+            timesDisplayed: 1,
+        });
+    }
+    localStorage.setItem('timesDisplayed', JSON.stringify(productDisplayDetails));
 
 };
 
@@ -94,17 +110,16 @@ form.addEventListener('submit', (e) => {
     //create a new formdata class
     const formData = new FormData(form);
 
-    const selectedProductId = (formData.get('product'));
-    
+    const selectedProductId = (formData.get('product')); 
 
     totalVotes++;
-    
 
     //whichever one they clicked on, see if they've voted for it before
     const productInVotesArray = findById(productVoteDetails, selectedProductId);
 
     if (productInVotesArray) {
         productInVotesArray.votes++;
+        
     } else {
         // const newVoteObject = {
         //     id: selectedProductId,
@@ -116,14 +131,14 @@ form.addEventListener('submit', (e) => {
             id: selectedProductId,
             votes: 1,
         });
-        
-
     }
+    
 
     //makes radio button checked false
     document.querySelector('input[name="product"]:checked').checked = false;
 
     //setting data into localStorage w an attribut of 'votes', then "stringifying" it so it plays nice w localStorage
+    
     localStorage.setItem('votes', JSON.stringify(productVoteDetails));
 
 
@@ -134,7 +149,7 @@ form.addEventListener('submit', (e) => {
 		// if theres coffee in the votes array, increment the votes for coffee
         // if theres no coffee, push some coffee into the array
         
-    if (totalVotes >= 25) {
+    if (totalVotes >= 10) {
         // document.querySelector('button').disabled = true;
         // alert('Thanks for your participation!');
         window.location = 'results.html';
