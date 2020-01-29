@@ -8,6 +8,7 @@ import { products } from './api.js';
 const productsData = products.slice();
 
 function findById(items, id) {
+    console.log(items);
     for (let i = 0; i < items.length; i++) {
         const item = items[i];
         if (item.id === id) {
@@ -15,6 +16,43 @@ function findById(items, id) {
         }
     }
 }
+
+
+
+// const addResultsArray = (dataArray, id) => {
+//     // const productThingList = productsData;
+//     const product = findById(productsData.id);
+//     console.log(product);
+    
+//     const productDisplayArray = dataArray.findById(id);
+//     if (productDisplayArray) {
+//         productDisplayArray.timesDisplayed++;  
+//     } else {
+
+//         productDisplayDetails.push({
+//             name: product.name,
+//             id: id,
+//             apperanceCount: 1,
+//             selectedCount: 0
+//         });
+//     }
+// localStorage.setItem('whatever', JSON.stringify(productDisplayDetails));
+
+// };
+
+const results = [];
+
+// function removeById(items, id) {
+    
+//     for (let i = 0; i < items.length; i++) {
+//         const item = items[i];
+//         if (item.id === id) {
+            
+//             return productsData.splice(i, 1);
+            
+//         }
+//     }
+// }
 
 let totalVotes;
 let productVoteDetails;
@@ -30,11 +68,23 @@ initializeState();
 
 // display three random NON-duplicated products
 // display three NEW products ***refresh products between votes***)
-const displayThreeProducts = (previousProduct1, previousProduct2, previousProduct3) => {
+const displayThreeProducts = () => {
 	// GET/SET three random products from our data
     let product1 = getRandomProduct(productsData);
     let product2 = getRandomProduct(productsData);
     let product3 = getRandomProduct(productsData);
+
+    // console.log(addResultsArray(results, product1.id), '-=------------');
+    // results.addResultsArray(results, product2.id);
+    // results.addResultsArray(results, product3.id);
+
+    // if (previousProduct1 === undefined || previousProduct2 === undefined || previousProduct3 === undefined) { 
+    //     //  block of code to be executed if condition1 is true
+    // } else if (condition2) {
+    // //  block of code to be executed if the condition1 is false and condition2 is true
+    // } else {
+    // //  block of code to be executed if the condition1 is false and condition2 is false
+    // }
 
 	// make sure the products are unique/not the same
     while (product1.id === product2.id
@@ -44,16 +94,40 @@ const displayThreeProducts = (previousProduct1, previousProduct2, previousProduc
         product2 = getRandomProduct(productsData);
         product3 = getRandomProduct(productsData);
     }
+    // console.log('+++++++++++++++++++++')
+    // console.log(removeById(product1.id));
+    // console.log(removeById(product2.id));
+    // console.log(removeById(product3.id));
+    // removeById(product2.id);
+    // removeById(product3.id);
 
-    while (previousProduct1 === product1.id || previousProduct1 === product2.id || previousProduct1 === product3.id || previousProduct2 === product1.id || previousProduct2 === product2.id || previousProduct2 === product3.id || previousProduct3 === product1.id || previousProduct3 === product2.id || previousProduct3 === product3.id) {
-        product1 = getRandomProduct(productsData);
-        product2 = getRandomProduct(productsData);
-        product3 = getRandomProduct(productsData);
-    }
+    // console.log('==========');
+    // console.log(product1.id);
+    // console.log(product2.id);
+    // console.log(product3.id);
 
-    previousProduct1 = product1.id;
-    previousProduct2 = product2.id;
-    previousProduct3 = product3.id;
+    
+
+    // products.slice(previousProduct1, previousProduct1 + 1);
+    // products.slice(previousProduct2, previousProduct2 + 1);
+    // products.slice(previousProduct3, previousProduct3 + 1);
+
+
+    // //previous product logic
+    // while (previousProduct1 === product1.id || previousProduct1 === product2.id || previousProduct1 === product3.id || previousProduct2 === product1.id || previousProduct2 === product2.id || previousProduct2 === product3.id || previousProduct3 === product1.id || previousProduct3 === product2.id || previousProduct3 === product3.id) {
+    //     product1 = getRandomProduct(productsData);
+    //     product2 = getRandomProduct(productsData);
+    //     product3 = getRandomProduct(productsData);
+    // }
+
+    // previousProduct1 = product1.id;
+    // previousProduct2 = product2.id;
+    // previousProduct3 = product3.id;
+
+    // console.log('==============');
+    // console.log(previousProduct1);
+    // console.log(previousProduct2);
+    // console.log(previousProduct3);
     
 	// render these three items on the screen as radio buttons with the same name and different values
     //Get Elements
@@ -77,24 +151,12 @@ const displayThreeProducts = (previousProduct1, previousProduct2, previousProduc
     image1.src = product1.image;
     image2.src = product2.image;
     image3.src = product3.image;
-    let previousProductArray = [previousProduct1, previousProduct2, previousProduct3];
-    // return previousProduct1, previousProduct2, previousProduct3;
-    previousProductArray;
 
-
-    const productDisplayArray = findById(productDisplayDetails);
-    if (productDisplayArray) {
-        productDisplayArray.timesDisplayed++;
-        
-    } else {
-
-        productDisplayDetails.push({
-            timesDisplayed: 1,
-        });
-    }
-    localStorage.setItem('timesDisplayed', JSON.stringify(productDisplayDetails));
-
+    // let previousProductArray = [previousProduct1, previousProduct2, previousProduct3];
+    // // return previousProduct1, previousProduct2, previousProduct3;
+    // previousProductArray;
 };
+    
 
 
 
@@ -132,6 +194,26 @@ form.addEventListener('submit', (e) => {
             votes: 1,
         });
     }
+
+    // const displayedIDArray = findById(productDisplayDetails, selectedProductId);
+
+    // if (displayedIDArray) {
+    //     displayedIDArray.displayed++;
+        
+    // } else {
+    //     // const newVoteObject = {
+    //     //     id: selectedProductId,
+    //     //     votes: 1,
+    //     // };
+    //     //any array has a push object to push things into it
+    //     // productVoteDetails.push(newVoteObject);
+    //     productDisplayDetails.push({
+    //         id: selectedProductId,
+    //         displayed: 1,
+    //     });
+    // }
+    // console.log(displayedIDArray);
+    
     
 
     //makes radio button checked false
@@ -176,3 +258,6 @@ displayThreeProducts();
 
 // STRECH don't show previous products
 // STRECH keep track of how many times a products appears so we can build a percentage (times clicked / times shown)
+
+//Things to ask questions about - how to make janky previous duplicate function to work
+//How to display count for how many times an image was displayed
