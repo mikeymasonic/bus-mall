@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <title>BusMall</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Oswald|Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -15,55 +16,50 @@
     </header>
 <main>
     <h3>Help us making some marketing choices!</h3>
-    <h4>Make a selection of a product that you would likely purchase out of the three listed, once you make a selection, click "Submit Choice" to continue</h4>
-<!-- 
-    <div id="picture1" class="pictures"></div>
-    <div id="picture2" class="pictures"></div>
-    <div id="picture3" class="pictures"></div> -->
+    <h4>Make a selection of a product that you would likely purchase out of the three listed, once you make a selection, click "Submit" to continue</h4>
+    <section class="arrange-selection">
+        <div class="flex-grid">
 
-    <div id="choice-container">
+	<form id="form-thing">
+		<label>
+            <div class="col">
+            <span id="product1span"></span>
+            <br>      
+            <input id="product1" type="radio" name="product" />
+            <img class="image-class" alt="somewords" id="img1" src="">
 
-        <label class="picture1">
-            <input type="radio" name="" value="">
-            <img id="img1" src="">
-            <p class="description"></p>
+        </div>
+		</label>
+
+		<label>
+            <div class="col">
+            <span id="product2span"></span>
+            <br>
+            <input id="product2" type="radio" name="product" />
+            <img class="image-class" id="img2" src="">
+
+        </div>
+		</label>
+
+		<label>
+            <div class="col">
+            <span id="product3span"></span>
+            <br>
+            <input id="product3" type="radio" name="product" />
+            <img class="image-class" id="img3" src="">
+
+        </div>
         </label>
-
-        <label class="picture2">
-            <input type="radio" name="" value="">
-            <img id="img2" src="">
-            <p class="description"></p>
-        </label>
-
-        <label class="picture3">
-            <input type="radio" name="" value="">
-            <img id="img3" src="">
-            <p class="description"></p>
-        </label>
-        <section id="buttonLinks"></section>
     </div>
+        
+        <button id="submit">Submit</button>
+
+    </form>
+    <!-- <p id="out-of">
+        <div id="status-count">0</div> out of 25
+        </p> -->
 </section>
 
-    
-
-    <p>
-    <div id="status-count"></div> out of 25
-    </p>
-
-    
-
-    <button id="button">Submit Choice</button>
-
-    <p id="next-container" class="hidden">
-        <button id="next-button">Next</button>
-    </p>
-    
-    <p>
-        <a href="./">Play Again</a>
-    </p>
-
-    <div id="all-time-views-clicks"></div>
-</main>
     <script type="module" src="app.js"></script>
 </body>
 

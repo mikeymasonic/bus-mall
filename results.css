@@ -1,0 +1,33 @@
+canvas {
+    width: 50%;
+    height: 100px;
+  }
+
+/* body {
+    background-color: #1ad462;
+}
+
+/* unvisited link */
+a:link {
+    color: aquamarine;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: aquamarine;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+    text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+    text-decoration: underline;
+}
+   */
