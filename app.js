@@ -223,7 +223,7 @@ form.addEventListener('submit', (e) => {
     
     localStorage.setItem('votes', JSON.stringify(productVoteDetails));
 
-
+    //test
 	// EVENT LISTENER
 	// add event listener to each radio button to select one of the three products
 	// when they select a product, update the total votes
